@@ -1,5 +1,10 @@
 root = true
 
+pre {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
 [*]
 end_of_line = lf
 insert_final_newline = true
