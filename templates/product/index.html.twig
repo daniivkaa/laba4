@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <div class="row">
+        <div class="col-3 ml-5">
+            <h2>Категории:</h2>
+            <div class="list-group">
+                {% for categoryItem in category %}
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <a href = "{{path('product', {categorySlug: categoryItem.slug})}}">
+                            {{ categoryItem.title }}
+                        </a>
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-8">
+            <h2>Товары:</h2>
+            <div class="row">
+                {% for productItem in product %}
+                <div class="card mr-3" style="width: 18rem;">
+                  <img class="card-img-top" src="{{ asset('/images/products/') }}{{ productItem.product }}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ productItem.title }}</h5>
+                    <p class="card-text">{{ productItem.shortContent() }}.</p>
+                    <p class="card-text">Рейтинг: {{ productItem.rating }}</p>
+                    <a href="{{ path('singleProduct', {'product' : productItem.id})}}">Подробнее</a>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">{{ knp_pagination_render(product) }}</div>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.title }}{% endblock %}
+
+{% block body %}
+    <div class="container card" style="width: 60rem;">
+        <div class="card mb-3">
+          <img class="card-img-top" src="{{ asset('/images/products/') }}{{ product.product }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">{{ product.content }}</p>
+            <p class="card-text">Рейтинг: {{ product.rating }}</p>
+            <a href="{{ path('page') }}">Вернуться</a>
+          </div>
+        </div>
+        
+        
+        <h2>Комментарии</h2>
+         {{ render(controller('App\\Controller\\CommentController::createComment', {'product': product.id })) }}
+
+        {% for comment in product.comment %}
+        <div class="card bg-warning text-black mb-3">
+            <div class="card-body">
+                <div>{{ comment.user.name }}</div>
+                <br>
+                <div>{{ comment.content }}</div>
+            </div>
+        </div>
+        {% endfor %}     
+    </div>
+
+{% endblock %}

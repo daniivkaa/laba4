@@ -1,0 +1,14 @@
+<div class="container">
+        <div class="card bg-warning text-white mb-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    <div class = "mt-3">{{ form_widget(form.content) }}</div>
+                    <h2>Оцените продукт</h2>
+                    <div class = "mt-2">{{ form_widget(form.rating) }}</div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Добавить комментарий</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+</div>
